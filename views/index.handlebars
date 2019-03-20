@@ -2,7 +2,7 @@
 	
     <div class="row">
         <div class="center col-sm-12">
-            <img src="" alt="burgerTimeApp">
+            <img src="https://image.freepik.com/free-photo/delicious-cheeseburger_1232-503.jpg" alt="burgerTimeApp" height="200px">
             <h1>Burger Time App!</h1>
             <p></p>
         </div>
@@ -13,18 +13,20 @@
 
 			<br>
 			
-            <h2>Burgers Available To Eat!</h2>
+            <h2 class="animated zoomIn">Burgers Available To Eat!</h2>
 
             <ul>
                 {{#each burgers}}
                 {{#unless this.devoured}}
-                    <li>
+                    <li style="font-family:Arial, Helvetica, sans-serif; font-size: 24px; padding: 10px;">
                         {{this.id}}
                         {{this.burger_name}}
 
+                        <br>
+
                         <form action="/{{this.id}}?_method=PUT" method="POST">
                             <input type="hidden" name="devoured" value="true">
-                            <button class="btn-primary" type="submit">Devour It!</button>
+                            <button class="btn-primary" type="submit" style="background-color: cadetblue; font-family:Arial, Helvetica, sans-serif; font-size: 24px; color:#ffffff;">Devour It!</button>
                         </form>
 
                     </li>
