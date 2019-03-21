@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     port: 3306,
     host: "localhost",
     user: "root",
-    password: "MilaBean417", //delete after uploading to Heroku
+    password: "MilaBean417",
     database: "burgers_db"
 });
 

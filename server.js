@@ -1,29 +1,46 @@
-//DEPENDENCIES
+// ==============================================================================
+// DEPENDENCIES
+// ==============================================================================
+
 var express = require("express");
 var bodyParser = require("body-parser");
-var methodOverride = require("method-override");
+var path = require('path');
 
-//EXPRESS
+// ==============================================================================
+// EXPRESS CONFIGURATION
+// ==============================================================================
+
 var app = express();
-var port = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000;
 
-//CSS
-app.use(express.static(__dirname + '/public'));
+// ==============================================================================
+// CSS 
+// ==============================================================================
+app.use(express.static(path.join(__dirname, '/public')));
 
-//MIDDLEWARE
+// ==============================================================================
+// MIDDLEWARE
+// ==============================================================================
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
-app.use(methodOverride("_method"));
 
-//HANDLEBARS
+// ==============================================================================
+// HANDLEBAR
+// ==============================================================================
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-//ROUTER
+// ==============================================================================
+// ROUTER
+// ==============================================================================
 var routes = require("./controllers/burgers_controller.js");
 app.use("/", routes);
 
-//LISTENER
-app.listen(port);
+// ==============================================================================
+// LISTENER
+// ==============================================================================
+app.listen(PORT, function() {
+    console.log('Burger Time App listening on PORT: ' + PORT);
+});
