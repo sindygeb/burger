@@ -14,5 +14,14 @@ if (process.env.JAWSDB_URL) {
 });
 }
 
-connection.connect();
+//mySQL connection
+connection.connect(function(err) {
+    if (err) {
+        console.error('ERROR: MySQL connection error --' + err.stack + '\n\n');
+        return;
+    }
+    console.log('Connected to MySQL database as id ' + connection.threadId + '\n\n');
+});
+
+//Export connections
 module.exports = connection;
